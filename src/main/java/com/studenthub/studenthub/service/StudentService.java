@@ -1,5 +1,7 @@
 package com.studenthub.studenthub.service;
 
-public interface StudentService {
+import com.studenthub.studenthub.model.Student;
 
+public interface StudentService {
+    public Student saveStudent(Student student);
 }
