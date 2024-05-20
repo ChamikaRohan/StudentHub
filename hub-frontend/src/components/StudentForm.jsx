@@ -1,10 +1,18 @@
-import * as React from 'react';
+import{React, useState} from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-import { Container, Paper } from '@mui/material';
+import { Container, Paper, Button } from '@mui/material';
+
 
 export default function StudentForm() {
     const paperStyle = {padding: '50px 20px', width: 600, margin: '150px auto'}
+    const [name, setName] = useState('');
+    const [address, setAddress] = useState('');
+
+    const handleSubmit = (e)=>{
+        e.preventDefault();
+ 
+    }
   return (
     <Container>
         
@@ -16,12 +24,16 @@ export default function StudentForm() {
                 '& > :not(style)': { m: 5, width: '25ch' },
             }}
             noValidate
-            autoComplete="off"
-            >
-                <TextField id="standard-basic" label="Student name" variant="outlined" fullWidth />
-                <TextField id="standard-basic" label="Student Address" variant="outlined" fullWidth />
+            autoComplete="off">
+                <TextField value={name} onChange={(e)=>{setName(e.target.value)}} id="standard-basic" label="Student name" variant="outlined" fullWidth />
+                <TextField value={address} onChange={(e)=>{setAddress(e.target.value)}} id="standard-basic" label="Student Address" variant="outlined" fullWidth />
+                <Button onClick={handleSubmit} size="large"  variant="contained" color="success">
+                Submit
+                </Button>
            </Box>
         </Paper>
     </Container>
   );
 }
+
+
