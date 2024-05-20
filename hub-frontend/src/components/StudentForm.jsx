@@ -55,10 +55,10 @@ export default function StudentForm() {
         <Paper elevation={5} style={paperStyle}>
             <h1 style={{marginBottom: "50px"}}>Students Details</h1>
             {students.map(student=>(
-                <Paper elevation={5} style={{margin: "10px", padding: "15px"}} key={student.id}>
-                    Student ID: {student.id}
-                    Student Name: {student.name}
-                    Student Address: {student.address}
+                <Paper elevation={5} style={{margin: "10px", padding: "15px", textAlign: "left"}} key={student.id}>
+                    Student ID: {student.id}<br/>
+                    Student Name: {student.name}<br/>
+                    Student Address: {student.address}<br/>
                 </Paper>
             ))}
         </Paper>
