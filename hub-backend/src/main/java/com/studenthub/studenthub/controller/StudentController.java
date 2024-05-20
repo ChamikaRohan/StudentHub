@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.studenthub.studenthub.model.Student;
 import com.studenthub.studenthub.service.StudentService;
 
-@CrossOrigin
+@CrossOrigin //Resolved Cross-Origin Resource Sharing policy issue
 @RestController
 @RequestMapping("/student")
 public class StudentController {
