@@ -1,4 +1,4 @@
-import{React, useState} from 'react';
+import{React, useEffect, useState} from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { Container, Paper, Button } from '@mui/material';
@@ -8,6 +8,16 @@ export default function StudentForm() {
     const paperStyle = {padding: '50px 20px', width: 600, margin: '150px auto'}
     const [name, setName] = useState('');
     const [address, setAddress] = useState('');
+    const [students, setStudents] = useState([]);
+
+    useEffect(()=>{
+        fetch('http://localhost:8080/student/getAll')
+        .then((res)=>{
+            return res.json();
+        }).then((res)=>{
+            setStudents(res);}
+        )
+    },[])
 
     const handleSubmit = (e)=>{
         e.preventDefault();
@@ -40,6 +50,17 @@ export default function StudentForm() {
                 Submit
                 </Button>
            </Box>
+        </Paper>
+
+        <Paper elevation={5} style={paperStyle}>
+            <h1 style={{marginBottom: "50px"}}>Students Details</h1>
+            {students.map(student=>(
+                <Paper elevation={5} style={{margin: "10px", padding: "15px"}} key={student.id}>
+                    Student ID: {student.id}
+                    Student Name: {student.name}
+                    Student Address: {student.address}
+                </Paper>
+            ))}
         </Paper>
     </Container>
   );
