@@ -11,7 +11,16 @@ export default function StudentForm() {
 
     const handleSubmit = (e)=>{
         e.preventDefault();
- 
+        const student = {name, address};
+        fetch("http://localhost:8080/student/add",{
+            method: "POST",
+            headers: {"Content-Type":"application/json"},
+            body:JSON.stringify(student)
+        }).then(()=>{
+            console.log("User added sucessfully!")
+        }).catch((error)=>{
+            console.log(error);
+        })
     }
   return (
     <Container>
